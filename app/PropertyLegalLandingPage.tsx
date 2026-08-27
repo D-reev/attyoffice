@@ -189,8 +189,8 @@ export default function PropertyLegalLandingPage() {
         className="sticky top-0 z-40 border-b"
         style={{ backgroundColor: COLORS.paper, borderColor: "rgba(184,146,46,0.35)" }}
       >
-        <div className="max-w-6xl mx-auto px-6 md:px-8 h-20 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-2.5 focus-ring rounded-sm">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 h-24 flex items-center justify-between gap-8">
+          <a href="#top" className="flex items-center gap-4 shrink-0 focus-ring rounded-sm">
             <span
               className="relative block w-12 h-12 shrink-0 overflow-hidden rounded-sm"
             >
@@ -211,7 +211,7 @@ export default function PropertyLegalLandingPage() {
             </span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-10 xl:gap-12">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -225,17 +225,22 @@ export default function PropertyLegalLandingPage() {
           </nav>
 
           <div className="hidden lg:block">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-sm transition-transform hover:-translate-y-0.5 focus-ring"
-              style={{ backgroundColor: COLORS.forest, color: COLORS.paper }}
-            >
-              Book a Consultation
-            </a>
+            <div className="flex items-center gap-7 shrink-0">
+              <a href="/login" className="text-sm font-semibold hover:opacity-70 transition-opacity focus-ring rounded-sm" style={{ color: COLORS.forest }}>
+                Sign in
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-sm transition-transform hover:-translate-y-0.5 focus-ring"
+                style={{ backgroundColor: COLORS.forest, color: COLORS.paper }}
+              >
+                Book a Consultation
+              </a>
+            </div>
           </div>
 
           <button
-            className="lg:hidden p-2 focus-ring rounded-sm"
+            className="lg:hidden p-3 -mr-2 focus-ring rounded-sm"
             aria-label={navOpen ? "Close menu" : "Open menu"}
             onClick={() => setNavOpen((v) => !v)}
           >
@@ -257,6 +262,14 @@ export default function PropertyLegalLandingPage() {
               onClick={() => setNavOpen(false)}
             >
               Book a Consultation
+            </a>
+            <a
+              href="/login"
+              className="inline-flex items-center justify-center text-sm font-semibold px-5 py-2.5 rounded-sm border"
+              style={{ borderColor: COLORS.forest, color: COLORS.forest }}
+              onClick={() => setNavOpen(false)}
+            >
+              Sign in
             </a>
           </div>
         )}

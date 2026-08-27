@@ -16,6 +16,38 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Supabase login setup
+
+The login page is available at `/login`. It authenticates with Supabase Auth, then reads the role from a `profiles` row whose `id` matches the Auth user's ID.
+
+Run this in the Supabase SQL editor:
+
+```sql
+create table public.profiles (
+	id uuid primary key references auth.users(id) on delete cascade,
+	role text not null check (role in (
+		'customer', 'broker', 'unverified_broker', 'seller',
+		'unverified_seller', 'admin', 'employee'
+	)),
+	created_at timestamptz not null default now()
+);
+
+alter table public.profiles enable row level security;
+
+create policy "Users can read their own profile"
+	on public.profiles for select
+	using (auth.uid() = id);
+```
+
+After creating each user in Supabase Authentication, insert their role using that user's UUID:
+
+```sql
+insert into public.profiles (id, role)
+values ('AUTH_USER_UUID', 'customer');
+```
+
+Use `broker`, `unverified_broker`, `seller`, `unverified_seller`, `admin`, or `employee` for the other roles. Admin-only role assignment should be done in Supabase, never from the browser.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
