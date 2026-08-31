@@ -211,7 +211,7 @@ export default function PropertyLegalLandingPage() {
             </span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-10 xl:gap-12">
+          <nav className="hidden lg:flex items-center xl:gap-4 sm:gap-2">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}

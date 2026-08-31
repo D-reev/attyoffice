@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const password = process.env.TEST_ACCOUNT_PASSWORD;
-//YourTestPassword123!
+//PassWord123
 if (!url || !serviceRoleKey) throw new Error("Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY first.");
 if (!password || password.length < 8) throw new Error("Set TEST_ACCOUNT_PASSWORD to at least 8 characters.");
 
