@@ -10,11 +10,13 @@
     "seed:test-users": "node --env-file=.env scripts/create-test-users.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.5.0",
     "@supabase/supabase-js": "^2.112.4",
     "lucide-react": "^1.33.0",
     "next": "16.3.2",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "sonner": "^2.0.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

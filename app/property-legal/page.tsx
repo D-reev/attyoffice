@@ -17,7 +17,7 @@ import {
   ScrollText,
   Search,
 } from "lucide-react";
-import PawingiLogo from "../public/PawingiLogo.jpg";
+import PawingiLogo from "../../public/PawingiLogo.jpg";
 
 
 // ---------------------------------------------------------------------------

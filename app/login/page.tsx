@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, KeyRound, ShieldCheck } from "lucide-react";
+import { toast } from "sonner";
 import { supabase } from "../../lib/supabase";
 
 const ROLE_DESTINATIONS: Record<string, string> = {
@@ -50,7 +51,14 @@ export default function LoginPage() {
       return;
     }
 
-    router.push(destination);
+    // Show success toast
+    toast.success(`Welcome! Redirecting to your dashboard...`);
+    
+    // Wait for session to sync to cookies before redirecting
+    setTimeout(() => {
+      router.push(destination);
+      setIsLoading(false);
+    }, 800);
   }
 
   return (
